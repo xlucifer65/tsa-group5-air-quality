@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: pip
+      - run: python -m pip install --upgrade pip
+      - run: pip install -r requirements.txt
+      - run: ruff check src/
+      - run: pytest
+      - name: Prepare small notebook sample
+        run: |
+          mkdir -p data/processed
+          cp tests/fixtures/pm25_paris_daily.csv data/processed/pm25_paris_daily.csv
+      - name: Smoke-test notebooks
+        run: jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=120 notebooks/*.ipynb
+      - name: Check notebook output sizes
+        run: python scripts/check_notebook_outputs.py notebooks
