@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TSA Group 5 Work Plan</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm; }
+  :root { --ink:#1a1a1a; --muted:#5b6170; --line:#d9dce3; --accent:#2b4c7e; --soft:#f3f5f9; }
+  body { font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; color:var(--ink); font-size:10.5pt; line-height:1.45; background:#fff; margin:0; }
+  h1 { font-size:20pt; margin:0 0 2px; color:var(--accent); }
+  h2 { font-size:13pt; margin:20px 0 8px; padding-bottom:4px; border-bottom:2px solid var(--accent); color:var(--accent); }
+  h3 { font-size:11pt; margin:14px 0 6px; }
+  .sub { color:var(--muted); margin:0 0 14px; }
+  table { width:100%; border-collapse:collapse; margin:6px 0 10px; }
+  th, td { border:1px solid var(--line); padding:6px 8px; vertical-align:top; text-align:left; }
+  th { background:var(--soft); font-weight:600; }
+  .box { background:var(--soft); border-left:4px solid var(--accent); padding:10px 12px; margin:10px 0; }
+  .warn { border-left-color:#b5542b; }
+  ul.check { list-style:none; padding-left:0; margin:4px 0; }
+  ul.check li { padding:2px 0 2px 22px; position:relative; }
+  ul.check li:before { content:""; position:absolute; left:2px; top:5px; width:10px; height:10px; border:1.5px solid var(--ink); border-radius:2px; }
+  .who { display:inline-block; font-size:8.5pt; font-weight:600; padding:0 6px; border-radius:3px; background:#e4e9f2; color:var(--accent); margin-left:4px; }
+  code { font-family: Menlo, monospace; font-size:9pt; background:var(--soft); padding:0 3px; }
+  pre { font-family: Menlo, monospace; font-size:8.8pt; background:var(--soft); padding:8px 10px; border-radius:4px; }
+  .pb { page-break-before: always; }
+  .small { font-size:9pt; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<h1>Time Series Analysis Project: Work Plan</h1>
+<p class="sub">AIS-26-S2 / DSP-RecSys-TSA &middot; Group 5 &middot; Prepared 15 Nov 2026 &middot; Professor: Alaa Bakhti</p>
+
+<table>
+  <tr><th style="width:22%">Member</th><th style="width:28%">Email</th><th>Role</th></tr>
+  <tr><td>Rayyan Ahemad Mohd</td><td>rayyan-ahemad.mohd@epita.fr</td><td>Lead: repo, data ingestion, cleaning pipeline, re-forecasting, final integration</td></tr>
+  <tr><td>Prem Gudivada</td><td>prem-siva-naga-sai-ram-kumar.gudivada@epita.fr</td><td>Exploration and decomposition</td></tr>
+  <tr><td>Yahya Sow</td><td>yahya.sow@epita.fr</td><td>Forecasting: SARIMA and Prophet</td></tr>
+  <tr><td>Vishal Naveen</td><td>vishal.naveen@epita.fr</td><td>Anomaly detection</td></tr>
+</table>
+
+<h2>1. What the project is</h2>
+<p>Source: <code>github.com/EPITA-courses/time-series-analysis/blob/main/assignments/2_project.md</code>, posted in the channel on 10 Oct 2026.</p>
+<p><b>Title:</b> Forecasting and Anomaly Detection. Pick one dataset, explore and decompose it, forecast it with SARIMA and Prophet, detect anomalies with at least two methods, clean them, re-forecast, and show whether cleaning improved the forecast.</p>
+<p><b>Deliverables:</b> (1) a GitHub repository with a Jupyter notebook and README; (2) a slide deck for the presentation.</p>
+<p><b>Graded on:</b> correct use of time series concepts; model comparison and justification; quality of the anomaly detection and impact analysis; clarity of the slides; repo structure and documentation.</p>
+
+<h3>Dataset status in the channel</h3>
+<table>
+  <tr><th>Dataset (from the official list of 4)</th><th>Status</th></tr>
+  <tr><td>Web Traffic: Kaggle Web Traffic Time Series</td><td>Taken by Group 1 (Ashish, Akash, Arman, Vikash)</td></tr>
+  <tr><td>Energy: UCI Household Power Consumption</td><td>Taken by Group 2 (Fateh, Yassine, Marouane, Aravind)</td></tr>
+  <tr><td><b>Air Quality: OpenAQ</b></td><td><b>Free. Recommended for us.</b></td></tr>
+  <tr><td>Sensor: Kaggle IoT Sensor Dataset</td><td>Free. Fallback.</td></tr>
+</table>
+<div class="box warn"><b>Do this first:</b> Groups 3 and 4 haven't claimed a dataset yet. Reply under the professor's 10 Oct post with our 4 names plus the dataset name and link, before someone else takes OpenAQ. Our current reply in the thread lists only the members.</div>
+
+<h3>Why OpenAQ</h3>
+<ul>
+  <li>Strong daily, weekly and yearly seasonality, which is ideal for showing SARIMA vs Prophet.</li>
+  <li>Real anomalies (pollution episodes, fireworks, sensor faults, flat-lines) give the anomaly section a story.</li>
+  <li>Proposed scope: one Paris station, <b>PM2.5</b>, hourly readings resampled to daily means, about 2 to 3 years. Data comes from the public OpenAQ S3 archive (<code>s3://openaq-data-archive</code>, no key needed) or API v3 (free key).</li>
+</ul>
+
+<h2>2. Master checklist</h2>
+
+<h3>Phase 0: Setup (Days 1 to 2)</h3>
+<ul class="check">
+  <li>Claim OpenAQ in the Teams thread (names + dataset + link) <span class="who">Rayyan</span></li>
+  <li>Create GitHub repo <code>tsa-group5-air-quality</code> and add all 4 as collaborators <span class="who">Rayyan</span></li>
+  <li>Repo skeleton: <code>data/</code>, <code>notebooks/</code>, <code>src/</code>, <code>reports/figures/</code>, <code>requirements.txt</code>, <code>.gitignore</code>, README <span class="who">Rayyan</span></li>
+  <li>Download raw data and write <code>src/load_data.py</code> to produce a clean daily series saved to <code>data/processed/</code> <span class="who">Rayyan</span></li>
+  <li>Everyone can run the notebook from a fresh clone <span class="who">All</span></li>
+</ul>
+
+<h3>Phase 1: Data exploration <span class="who">Prem</span></h3>
+<ul class="check">
+  <li>Plot the full series, a zoomed month, and a rolling mean and std</li>
+  <li>Count missing timestamps; justify the imputation choice (interpolation vs forward fill)</li>
+  <li>ADF test on the raw and differenced series and report the p-values</li>
+  <li>ACF and PACF plots, noting the lags that suggest the p, q and seasonal orders</li>
+</ul>
+
+<h3>Phase 2: Decomposition <span class="who">Prem</span></h3>
+<ul class="check">
+  <li>Classical <code>seasonal_decompose</code> (additive vs multiplicative, period = 7)</li>
+  <li>STL decomposition (robust = True)</li>
+  <li>Written interpretation of the trend, seasonality and residuals, and how classical and STL differ</li>
+  <li>Hand the suggested SARIMA orders to Yahya</li>
+</ul>
+
+<h3>Phase 3: Initial forecasting <span class="who">Yahya</span></h3>
+<ul class="check">
+  <li>Train/test split by time (last 60 to 90 days as test); no shuffling</li>
+  <li>SARIMA: order selection (ACF/PACF plus a small grid search or <code>auto_arima</code>), residual diagnostics</li>
+  <li>Prophet with weekly and yearly seasonality and French holidays</li>
+  <li>Metrics table: RMSE, MAE (both models), AIC and BIC (SARIMA)</li>
+  <li>Forecast vs actual plot with confidence intervals</li>
+</ul>
+
+<h3>Phase 4: Anomaly detection <span class="who">Vishal</span></h3>
+<ul class="check">
+  <li>Statistical method 1: rolling Z-score on the STL residuals</li>
+  <li>Statistical method 2: SARIMA residuals beyond 3 sigma (use Yahya's fitted model)</li>
+  <li>ML method: Isolation Forest or LOF on lag and rolling features</li>
+  <li>(Optional) LSTM autoencoder reconstruction error</li>
+  <li>Plot anomalies on the series; overlap table showing which methods agree</li>
+  <li>Discuss real-world causes (match dates to known pollution episodes or holidays)</li>
+</ul>
+
+<h3>Phase 5: Re-forecasting after cleaning <span class="who">Rayyan</span> <span class="who">Yahya</span></h3>
+<ul class="check">
+  <li>Replace the agreed anomalies (interpolation or STL-based imputation)</li>
+  <li>Refit SARIMA and Prophet on the cleaned training data</li>
+  <li>Before vs after comparison table (RMSE, MAE, AIC, BIC) and a written conclusion</li>
+</ul>
+
+<h3>Phase 6: Repo and slides <span class="who">All</span></h3>
+<ul class="check">
+  <li>README: problem, dataset and link, how to run, results summary, team <span class="who">Rayyan</span></li>
+  <li>Notebook runs top to bottom without errors; figures saved to <code>reports/figures/</code> <span class="who">Rayyan</span></li>
+  <li>Slides: dataset overview <span class="who">Rayyan</span>, decomposition and stationarity <span class="who">Prem</span>, ARIMA vs Prophet <span class="who">Yahya</span>, anomalies <span class="who">Vishal</span>, insights and recommendations <span class="who">All</span></li>
+  <li>Dry run of the full presentation with timing <span class="who">All</span></li>
+</ul>
+
+<h2 class="pb">3. Timeline</h2>
+<p class="small">No final deadline was found in the channel. Confirm the defense date with Prof. Bakhti and shift the dates below if needed.</p>
+<table>
+  <tr><th>Dates</th><th>Milestone</th><th>Owner</th><th>Done when</th></tr>
+  <tr><td>16 to 17 Nov</td><td>Dataset claimed, repo live, clean daily series committed</td><td>Rayyan</td><td><code>data/processed/</code> in the repo; everyone has cloned</td></tr>
+  <tr><td>18 to 22 Nov</td><td>Exploration and decomposition</td><td>Prem</td><td>Section 1 and 2 notebooks pushed with interpretation</td></tr>
+  <tr><td>20 to 25 Nov</td><td>SARIMA and Prophet baseline</td><td>Yahya</td><td>Metrics table + forecast plots pushed</td></tr>
+  <tr><td>22 to 27 Nov</td><td>Anomaly detection (2+ methods)</td><td>Vishal</td><td>Anomaly plots + overlap table pushed</td></tr>
+  <tr><td>27 to 30 Nov</td><td>Cleaning and re-forecast comparison</td><td>Rayyan, Yahya</td><td>Before/after table pushed</td></tr>
+  <tr><td>30 Nov to 3 Dec</td><td>README, slides, dry run</td><td>All</td><td>Slides PDF in repo; notebook runs clean</td></tr>
+</table>
+
+<h2>4. How we work</h2>
+<ul>
+  <li><b>Branches:</b> one per person (<code>prem/eda</code>, <code>yahya/forecast</code>, <code>vishal/anomaly</code>, <code>rayyan/pipeline</code>). Open a pull request into <code>main</code>; one other member reviews it.</li>
+  <li><b>Notebooks:</b> one per section (<code>01_eda.ipynb</code>, <code>02_decomposition.ipynb</code>, <code>03_forecasting.ipynb</code>, <code>04_anomalies.ipynb</code>, <code>05_reforecast.ipynb</code>), merged into the final notebook at the end. This avoids notebook merge conflicts.</li>
+  <li><b>Shared code</b> lives in <code>src/</code> (loading, metrics, plotting), so everyone uses the same split and metrics.</li>
+  <li><b>Fixed split:</b> everyone imports the train/test split from <code>src/load_data.py</code>. Never re-split by hand.</li>
+  <li><b>Progress:</b> the monitoring agent checks the repo against this checklist and posts a status summary. Tick items by merging PRs.</li>
+</ul>
+
+<h3>Starter code</h3>
+<pre>pip install pandas numpy matplotlib statsmodels prophet scikit-learn pmdarima jupyter
+
+from statsmodels.tsa.stattools import adfuller
+from statsmodels.tsa.seasonal import seasonal_decompose, STL
+from statsmodels.tsa.statespace.sarimax import SARIMAX
+from prophet import Prophet
+from sklearn.ensemble import IsolationForest</pre>
+
+<h3>Course reference</h3>
+<p>The course repo includes <code>tsa/anomaly_detection.py</code> (mean/std cutoff helpers) and an AirPassengers anomaly notebook. Reuse those plotting helpers so our style matches what the professor showed in class.</p>
+
+</body>
+</html>
