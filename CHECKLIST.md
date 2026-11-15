@@ -6,7 +6,7 @@ Tick an item (`[x]`) in the PR that completes it. The daily monitor reads this f
 - [ ] Claim OpenAQ in the Teams thread (names + dataset + link)
 - [x] Create GitHub repo and skeleton
 - [ ] Add Prem, Yahya, Vishal as collaborators
-- [ ] `src/load_data.py` producing the daily series in `data/processed/` plus a fixed train/test split
+- [x] `src/load_data.py` producing the daily series in `data/processed/` plus a fixed train/test split
 - [ ] Everyone can run the notebook from a fresh clone (All)
 
 ## Phase 1: Data exploration | Prem | due 2026-11-22
