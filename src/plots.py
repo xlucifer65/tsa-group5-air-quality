@@ -8,7 +8,6 @@ import pandas as pd
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 from statsmodels.tsa.seasonal import DecomposeResult
 
-
 FIGURES_DIR = Path("reports/figures")
 
 
@@ -53,9 +52,11 @@ def plot_rolling(
 
 
 def plot_acf_pacf(series: pd.Series, lags: int = 40) -> plt.Figure:
+    clean = series.dropna()
+    max_lags = max(1, min(lags, len(clean) // 2 - 1))
     fig, axes = plt.subplots(1, 2, figsize=(12, 4))
-    plot_acf(series.dropna(), lags=lags, ax=axes[0])
-    plot_pacf(series.dropna(), lags=lags, ax=axes[1], method="ywm")
+    plot_acf(clean, lags=max_lags, ax=axes[0])
+    plot_pacf(clean, lags=max_lags, ax=axes[1], method="ywm")
     axes[0].set_title("ACF")
     axes[1].set_title("PACF")
     fig.tight_layout()
