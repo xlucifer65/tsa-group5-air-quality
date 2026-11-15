@@ -7,3 +7,5 @@ pmdarima
 scikit-learn
 requests
 jupyter
+pytest
+ruff

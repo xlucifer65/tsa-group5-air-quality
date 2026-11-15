@@ -1,0 +1,8 @@
+# Replace the temporary notebook owners after Prem, Yahya, and Vishal provide GitHub usernames.
+# @xlucifer65 maintains all paths until then so ownership rules remain valid.
+/src/ @xlucifer65
+/notebooks/01_eda.ipynb @xlucifer65
+/notebooks/02_decomposition.ipynb @xlucifer65
+/notebooks/03_forecasting.ipynb @xlucifer65
+/notebooks/04_anomalies.ipynb @xlucifer65
+/notebooks/05_reforecast.ipynb @xlucifer65
