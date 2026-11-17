@@ -1,0 +1,5 @@
+source=open-meteo-air-quality
+note=Paris lat/lon hourly pm2_5 resampled to daily mean. Replace with OpenAQ station series from Rayyan load_data when ready.
+rows=1014
+date_min=2023-01-01
+date_max=2025-10-30

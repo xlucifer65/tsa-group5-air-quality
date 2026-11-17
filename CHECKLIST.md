@@ -6,20 +6,20 @@ Tick an item (`[x]`) in the PR that completes it. The daily monitor reads this f
 - [ ] Claim OpenAQ in the Teams thread (names + dataset + link)
 - [x] Create GitHub repo and skeleton
 - [ ] Add Prem, Yahya, Vishal as collaborators
-- [ ] `src/load_data.py` producing the daily series in `data/processed/` plus a fixed train/test split
+- [x] `src/load_data.py` producing the daily series in `data/processed/` plus a fixed train/test split
 - [ ] Everyone can run the notebook from a fresh clone (All)
 
 ## Phase 1: Data exploration | Prem | due 2026-11-22
-- [ ] Full series, zoomed month, rolling mean/std plots
-- [ ] Missing values counted and imputation justified
-- [ ] ADF test on raw and differenced series
-- [ ] ACF/PACF plots with suggested orders
+- [x] Full series, zoomed month, rolling mean/std plots
+- [x] Missing values counted and imputation justified
+- [x] ADF test on raw and differenced series
+- [x] ACF/PACF plots with suggested orders
 
 ## Phase 2: Decomposition | Prem | due 2026-11-22
-- [ ] Classical seasonal_decompose (additive vs multiplicative)
-- [ ] STL decomposition
-- [ ] Written interpretation of trend, seasonality and residuals
-- [ ] Suggested SARIMA orders handed to Yahya
+- [x] Classical seasonal_decompose (additive vs multiplicative)
+- [x] STL decomposition
+- [x] Written interpretation of trend, seasonality and residuals
+- [x] Suggested SARIMA orders handed to Yahya
 
 ## Phase 3: Initial forecasting | Yahya | due 2026-11-25
 - [ ] Time-based train/test split (from src)
