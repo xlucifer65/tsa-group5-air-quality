@@ -1,0 +1,4 @@
+,STL Z-score,SARIMA 3-sigma,Isolation Forest
+STL Z-score,16,2,1
+SARIMA 3-sigma,2,22,14
+Isolation Forest,1,14,31

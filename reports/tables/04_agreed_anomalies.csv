@@ -1,0 +1,16 @@
+date,pm25,n_methods,methods,month,weekday,in_test
+2023-02-09,42.3,2,"SARIMA 3-sigma, Isolation Forest",2023-02,Thursday,False
+2023-02-13,30.5,2,"SARIMA 3-sigma, Isolation Forest",2023-02,Monday,False
+2023-02-14,47.4,2,"SARIMA 3-sigma, Isolation Forest",2023-02,Tuesday,False
+2023-02-16,20.9,2,"SARIMA 3-sigma, Isolation Forest",2023-02,Thursday,False
+2024-01-16,35.1,2,"SARIMA 3-sigma, Isolation Forest",2024-01,Tuesday,False
+2024-01-19,36.9,3,"STL Z-score, SARIMA 3-sigma, Isolation Forest",2024-01,Friday,False
+2024-01-21,7.4,2,"SARIMA 3-sigma, Isolation Forest",2024-01,Sunday,False
+2024-11-05,38.8,2,"SARIMA 3-sigma, Isolation Forest",2024-11,Tuesday,False
+2024-12-13,35.5,2,"SARIMA 3-sigma, Isolation Forest",2024-12,Friday,False
+2025-01-03,27.5,2,"SARIMA 3-sigma, Isolation Forest",2025-01,Friday,False
+2025-01-15,48.6,2,"SARIMA 3-sigma, Isolation Forest",2025-01,Wednesday,False
+2025-01-16,22.7,2,"SARIMA 3-sigma, Isolation Forest",2025-01,Thursday,False
+2025-01-19,47.2,2,"SARIMA 3-sigma, Isolation Forest",2025-01,Sunday,False
+2025-02-03,55.2,2,"SARIMA 3-sigma, Isolation Forest",2025-02,Monday,False
+2025-03-25,31.1,2,"STL Z-score, SARIMA 3-sigma",2025-03,Tuesday,False
