@@ -87,9 +87,17 @@ def adf_table(raw: pd.Series) -> pd.DataFrame:
 def suggest_sarima_orders(
     seasonal_period: int = 7,
     prefer_diff: bool = False,
+    seasonal_diff: int = 0,
 ) -> dict[str, tuple[int, int, int] | tuple[int, int, int, int]]:
+    """Starter orders for a SARIMA search (not final orders).
+
+    d is 1 only if the raw series failed the ADF test. Seasonal differencing is
+    off by default: when the seasonal pattern is weak, D=1 over-differences the
+    series (strongly negative ACF at the seasonal lag). The final orders should
+    be selected by AIC/BIC on the training set (see 03_forecasting.ipynb).
+    """
     d = 1 if prefer_diff else 0
     return {
         "order": (1, d, 1),
-        "seasonal_order": (1, 1, 1, seasonal_period),
+        "seasonal_order": (1, seasonal_diff, 1, seasonal_period),
     }
