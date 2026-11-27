@@ -1,0 +1,17 @@
+model,scenario,RMSE,MAE,AIC,BIC
+"ARIMA(2,0,2)",Raw (before),4.185,3.621,5598.713,5627.814
+"ARIMA(3,0,0)",Raw (before),4.894,4.367,5602.515,5626.765
+Prophet (additive),Raw (before),4.239,3.426,,
+Prophet (regularized),Raw (before),3.781,2.941,,
+"ARIMA(2,0,2)","Cleaned: agreed, STL imputation",4.716,4.204,5552.501,5581.602
+"ARIMA(3,0,0)","Cleaned: agreed, STL imputation",4.725,4.219,5551.638,5575.888
+Prophet (additive),"Cleaned: agreed, STL imputation",4.153,3.421,,
+Prophet (regularized),"Cleaned: agreed, STL imputation",3.811,3.04,,
+"ARIMA(2,0,2)","Cleaned: agreed, linear imputation",4.14,3.578,5373.857,5402.958
+"ARIMA(3,0,0)","Cleaned: agreed, linear imputation",4.812,4.291,5377.292,5401.543
+Prophet (additive),"Cleaned: agreed, linear imputation",4.198,3.401,,
+Prophet (regularized),"Cleaned: agreed, linear imputation",3.795,3.015,,
+"ARIMA(2,0,2)","Cleaned: any method, STL imputation",4.184,3.629,5276.492,5305.593
+"ARIMA(3,0,0)","Cleaned: any method, STL imputation",4.549,4.064,5283.965,5308.216
+Prophet (additive),"Cleaned: any method, STL imputation",4.115,3.367,,
+Prophet (regularized),"Cleaned: any method, STL imputation",3.835,3.089,,

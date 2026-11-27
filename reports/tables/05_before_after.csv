@@ -1,0 +1,5 @@
+model,RMSE before,RMSE after,RMSE change %,MAE before,MAE after,MAE change %,AIC before,AIC after,BIC before,BIC after
+"ARIMA(2,0,2)",4.185,4.716,12.706,3.621,4.204,16.097,5598.713,5552.501,5627.814,5581.602
+"ARIMA(3,0,0)",4.894,4.725,-3.449,4.367,4.219,-3.388,5602.515,5551.638,5626.765,5575.888
+Prophet (additive),4.239,4.153,-2.027,3.426,3.421,-0.135,,,,
+Prophet (regularized),3.781,3.811,0.778,2.941,3.04,3.379,,,,

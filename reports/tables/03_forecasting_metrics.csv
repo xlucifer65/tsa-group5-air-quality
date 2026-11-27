@@ -1,0 +1,11 @@
+model,Test RMSE,Test MAE,AIC,BIC,CV mean RMSE,CV mean MAE
+"ARIMA(2,0,2)",4.185,3.622,5598.7,5627.8,7.449,5.852
+"ARIMA(3,0,0)",4.894,4.367,5602.5,5626.8,7.692,6.053
+Prophet (regularized),3.781,2.941,,,8.003,6.519
+Prophet (additive),4.239,3.426,,,8.212,6.695
+Baseline: train mean,5.048,4.571,,,8.237,6.387
+Baseline: naive (last value),4.275,2.969,,,9.501,8.332
+Baseline: seasonal naive (7d),4.172,3.178,,,9.694,8.002
+"SARIMA(3,0,0)(1,0,0,7)",4.895,4.368,5604.3,5633.4,,
+Baseline: seasonal naive (365d),6.076,4.843,,,,
+Prophet (multiplicative),4.42,3.638,,,,

@@ -1,0 +1,29 @@
+fold,model,RMSE,MAE
+1,"ARIMA(2,0,2)",12.8893,9.716
+1,"ARIMA(3,0,0)",13.1483,9.8105
+1,Prophet (additive),13.2764,10.409
+1,Prophet (regularized),12.8187,9.9918
+1,Baseline: train mean,13.8964,10.3219
+1,Baseline: naive (last value),14.8239,12.9556
+1,Baseline: seasonal naive (7d),13.9956,12.044
+2,"ARIMA(2,0,2)",7.6457,5.3753
+2,"ARIMA(3,0,0)",7.6857,5.3898
+2,Prophet (additive),7.566,5.5167
+2,Prophet (regularized),7.4205,5.4573
+2,Baseline: train mean,8.9038,5.9345
+2,Baseline: naive (last value),15.4694,14.3676
+2,Baseline: seasonal naive (7d),13.5335,10.5459
+3,"ARIMA(2,0,2)",5.0774,4.6944
+3,"ARIMA(3,0,0)",5.0389,4.6432
+3,Prophet (additive),7.7647,7.4305
+3,Prophet (regularized),7.9929,7.6881
+3,Baseline: train mean,5.0985,4.7208
+3,Baseline: naive (last value),3.4345,3.0368
+3,Baseline: seasonal naive (7d),7.0756,6.2392
+4,"ARIMA(2,0,2)",4.1851,3.6217
+4,"ARIMA(3,0,0)",4.8942,4.3667
+4,Prophet (additive),4.2394,3.4256
+4,Prophet (regularized),3.7811,2.9406
+4,Baseline: train mean,5.0481,4.5707
+4,Baseline: naive (last value),4.2748,2.9695
+4,Baseline: seasonal naive (7d),4.172,3.1775
